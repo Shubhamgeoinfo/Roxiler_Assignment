@@ -35,17 +35,13 @@ function App() {
     }
   };
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:8000/month/${month}?search=${search}&page=${pageNo}`
-      )
-      .then((res) => {
-        setTableData(res.data.data);
-        setTotalRecordCount(
-          res.data.totalCount.length ? res.data.totalCount[0].count : 0
-        );
-      });
-    axios.get(`http://localhost:8000/all/${month}`).then((res) => {
+    axios.get(`/month/${month}?search=${search}&page=${pageNo}`).then((res) => {
+      setTableData(res.data.data);
+      setTotalRecordCount(
+        res.data.totalCount.length ? res.data.totalCount[0].count : 0
+      );
+    });
+    axios.get(`/all/${month}`).then((res) => {
       setStatsData(res.data.statsData);
       setBarData(res.data.barData);
       setPieData(res.data.pieData);
