@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URL);
+    console.log({"conn":process.env.MONGO_URL})
     console.log(
       `Server is Conneted To Mongodb Databse and ready for CRUD operation ${conn.connection.host}`
     );
@@ -10,6 +11,7 @@ const connectDB = async () => {
     console.log(
       `Connection Error found  in db file during connection to Database ${error}`
     );
+    console.log({"conn":process.env.MONGO_URL})
   }
 };
 
